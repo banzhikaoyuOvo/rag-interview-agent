@@ -1,0 +1,172 @@
+[
+  {
+    "category": "ai_application_engineer",
+    "company": "联通（江西）产业互联网有限公司",
+    "position": "人工智能开发工程师",
+    "title": "联通（江西）产业互联网 - 人工智能开发工程师",
+    "location": "南昌·青山湖区",
+    "salary_range": "未公开",
+    "content": "联通（江西）产业互联网有限公司招聘人工智能开发工程师，工作地点南昌青山湖区。要求本科及以上学历，计算机相关专业，熟悉LLM、Transformer等技术原理，具有完整的LangChain框架项目开发经验，使用过视觉算法如YOLO搭建视觉检测场景。",
+    "requirements": [
+      "本科或以上学历",
+      "计算机相关专业",
+      "熟悉LLM、Transformer等技术原理",
+      "具有完整的LangChain框架项目开发经验",
+      "使用过视觉算法如YOLO搭建视觉检测场景"
+    ],
+    "responsibilities": [
+      "负责人工智能相关应用开发",
+      "参与视觉检测场景搭建"
+    ],
+    "tags": ["LLM", "Transformer", "LangChain", "YOLO", "视觉检测", "南昌"]
+  },
+  {
+    "category": "ai_application_engineer",
+    "company": "柏美智慧科技（上海）股份有限公司",
+    "position": "AI应用开发工程师",
+    "title": "柏美智慧科技 - AI应用开发工程师（智能制造）",
+    "location": "上海·普陀区",
+    "salary_range": "1.5-2.5万·15薪",
+    "content": "柏美智慧科技招聘AI应用开发工程师，聚焦工业场景下智能体（Agent）的开发与应用。通过设计、开发及优化智能体功能，解决复杂业务场景的自动化与智能化需求。接受优秀毕业生/当届实习生。要求对AI新技术有强烈兴趣，具备探索精神、团队协作能力、问题解决能力及自我驱动力。具备流程制造业垂直LLM研究开发经验加分；熟悉语言大模型全链路调优（覆盖Prompt工程、推理LLM训练、PEFT、RLHF、RAG等技术）加分；熟悉钢铁行业核心工艺及环保标准者优先。",
+    "requirements": [
+      "本科及以上学历，硕士/博士优先，211/985院校、海外TOP50院校背景更优",
+      "专业：应用数学、现代物理等理科逻辑性强的专业（工科需为人工智能方向）",
+      "态度：对AI新技术有强烈兴趣，具备探索精神、团队协作能力、问题解决能力及自我驱动力",
+      "具备流程制造业垂直LLM研究开发经验加分",
+      "熟悉语言大模型全链路调优（Prompt工程、推理LLM训练、PEFT、RLHF、RAG等）加分",
+      "熟悉钢铁行业核心工艺及环保标准者优先",
+      "接受优秀毕业生/当届实习生"
+    ],
+    "responsibilities": [
+      "Agent开发与训练：负责Agent功能应用及迭代、模型调优及数据标注",
+      "模型效能评估与迭代优化：通过算法优化提升智能体执行效率",
+      "跨部门协作与需求落地：协调各部门推进需求落地",
+      "客户场景工艺调研与流程优化：深入客户生产流程，挖掘业务痛点，结合多Agent协同效能分析优化工业场景解决方案",
+      "技术跟踪与知识更新：学习行业前沿技术，通过案例研究保持技术领先性"
+    ],
+    "tags": ["Agent", "智能制造", "RAG", "Prompt工程", "PEFT", "RLHF", "工业场景", "上海"]
+  },
+  {
+    "category": "ai_application_engineer",
+    "company": "快手",
+    "position": "AI应用开发工程师",
+    "title": "快手 - AI应用开发工程师",
+    "location": "杭州",
+    "salary_range": "未公开",
+    "content": "快手招聘AI应用开发工程师，工作地点杭州。参与AI应用的全栈开发，用于解决生产场景的复杂问题。开发适用于生产场景的MultiAgent系统，探索MultiAgent上下文工程的最佳实践。探索前沿AI技术，包括多模态大模型、Agent架构设计、RAG技术优化、工具调用链路设计等。加分项：有AI相关项目经验或互联网公司实习经历，特别是大模型应用、Agent开发、多模态应用等实践经验；有深度学习/机器学习相关的科研和探索经历，有相关竞赛获奖经历。",
+    "requirements": [
+      "本科及以上学历，计算机科学、软件工程、人工智能、数据科学等相关专业优先",
+      "熟悉至少一种编程语言（Java、Python等），具备一定编程基础",
+      "了解常见的数据结构与算法，能独立完成代码编写与调试",
+      "熟悉AI产品的使用逻辑与应用场景，有AI工具使用经验",
+      "了解Agent核心组件（Chains、Agents、Memory等）的使用场景与实现原理",
+      "了解prompt engineering的基本原理与方法"
+    ],
+    "responsibilities": [
+      "参与AI应用的全栈开发，用于解决生产场景的复杂问题",
+      "开发适用于生产场景的MultiAgent系统，探索MultiAgent上下文工程的最佳实践",
+      "探索前沿AI技术，包括多模态大模型、Agent架构设计、RAG技术优化、工具调用链路设计等",
+      "跟踪AI技术发展趋势，深度研究相关产品、开源项目、前沿论文，提炼核心技术要点"
+    ],
+    "tags": ["MultiAgent", "RAG", "Agent架构", "多模态", "Prompt Engineering", "杭州", "大厂"]
+  },
+  {
+    "category": "ai_application_engineer",
+    "company": "卓望信息技术（北京）有限公司",
+    "position": "AI应用开发工程师",
+    "title": "卓望信息技术 - AI应用开发工程师",
+    "location": "陕西·西安",
+    "salary_range": "未公开（含综合补贴、住房补贴3000元/月）",
+    "content": "卓望信息技术（中国移动控股子公司，国有控股企业）招聘AI应用开发工程师。负责基于大模型及AI能力的业务应用系统的设计、开发与交付。利用大模型API、Agent框架等构建智能应用，完成Prompt工程、工作流编排、多Agent协作等开发任务。要求熟练掌握Python或Java/Go，熟悉大模型API调用、Prompt设计、SKILL、MCP等AI应用开发基本技能。了解Dify、LangChain、向量数据库、RAG等AI应用开发技术栈者优先。岗位亮点：毕业生专属薪酬调整和晋升绿色通道，1V1导师配置，七险二金，住房福利3000元/月（入职前三年）。",
+    "requirements": [
+      "本科及以上学历，计算机科学、软件工程等相关专业优先，其他专业不限",
+      "熟练掌握Python或Java/Go等至少一门编程语言，具备扎实后端开发能力",
+      "熟悉大模型API调用、Prompt设计、SKILL、MCP等AI应用开发基本技能",
+      "了解Dify、LangChain、向量数据库、RAG等AI应用开发技术栈者优先",
+      "熟悉常用的数据库、消息队列、微服务架构，具备良好的工程化开发习惯",
+      "对AI技术有浓厚兴趣，具备快速学习能力和良好的沟通协作能力"
+    ],
+    "responsibilities": [
+      "负责基于大模型及AI能力的业务应用系统的设计、开发与交付",
+      "利用大模型API、Agent框架等构建智能应用，完成Prompt工程、工作流编排、多Agent协作等开发任务",
+      "负责AI应用的服务开发，完成接口设计、数据处理、服务集成及性能优化",
+      "对接业务需求，将AI能力融入产品功能，推动AI场景落地并持续优化用户体验",
+      "参与AI开发工具和平台的功能迭代"
+    ],
+    "tags": ["Agent框架", "Prompt工程", "RAG", "LangChain", "Dify", "MCP", "向量数据库", "西安", "国企"]
+  },
+  {
+    "category": "ai_application_engineer",
+    "company": "诚迈科技股份有限公司",
+    "position": "AI应用开发工程师",
+    "title": "诚迈科技 - AI应用开发工程师",
+    "location": "南京·浦口区",
+    "salary_range": "未公开",
+    "content": "诚迈科技招聘AI应用开发工程师。关注AI Agent领域技术的迭代，开发与问题分析的能力。熟悉主流LLM使用与落地（通义千问、kimi、GPT、DeepSeek、Claude等）。必须具备AI Agent实际开发/落地经验：能够基于现有LLM进行提示工程、Agent流程编排、工具集成与效果验证。熟悉AI Agent开发范式，了解经典的ReAct范式、plan-execute范式等，了解RAG、skill、context。",
+    "requirements": [
+      "具备AI Agent实际开发/落地经验",
+      "熟悉主流LLM使用与落地（通义千问、kimi、GPT、DeepSeek、Claude等）",
+      "能够基于现有LLM进行提示工程、Agent流程编排、工具集成与效果验证",
+      "熟悉AI Agent开发范式，了解经典的ReAct范式、plan-execute范式",
+      "了解RAG、skill、context"
+    ],
+    "responsibilities": [
+      "关注AI Agent领域技术的迭代",
+      "开发和问题分析",
+      "工具集成与效果验证"
+    ],
+    "tags": ["AI Agent", "ReAct", "Plan-Execute", "RAG", "Prompt工程", "南京"]
+  },
+  {
+    "category": "ai_application_engineer",
+    "company": "嘉环科技股份有限公司",
+    "position": "AI应用开发工程师",
+    "title": "嘉环科技 - AI应用开发工程师",
+    "location": "南京·雨花台区",
+    "salary_range": "未公开",
+    "content": "嘉环科技招聘AI应用开发工程师，负责RAG + Agent系统的全链路集成与优化，包括检索增强、知识图谱融合、多步推理、工具调用、输出可控性等。深度拆解B端复杂业务，将需求转化为可被Agent高效执行的结构化任务分解。构建高质量领域数据集，进行大模型SFT/PEFT/LoRA/QLoRA等微调。设计高可靠AI服务接口（REST/gRPC）、Prompt/Chain/Graph编排、后处理逻辑、错误恢复机制。建立完整的Agent闭环体系。熟练Linux + Docker环境，掌握Git + CI/CD基本流程。熟悉关系型数据库（MySQL/PostgreSQL）+ 向量数据库（Milvus/Zilliz/Chroma/PGVector等）。",
+    "requirements": [
+      "计算机、人工智能、软件工程等相关专业本科及以上",
+      "熟练使用Python/TS进行AI应用后端开发",
+      "熟练掌握至少一种主流AI Agent/RAG开发框架：LangGraph（状态图编排、循环控制）、LlamaIndex、CrewAI",
+      "熟悉Agent开发全生命周期关键环节：跟踪与可观测性（LangSmith、Phoenix、W&B、Prometheus）、评估与指标体系（LLM-as-a-Judge、RAGAS、DeepEval）、优化迭代",
+      "熟练Linux + Docker环境，掌握Git + CI/CD基本流程",
+      "熟悉关系型数据库（MySQL/PostgreSQL）+ 向量数据库（Milvus/Zilliz/Chroma/PGVector等）",
+      "具备较强的B端业务理解与需求转化能力"
+    ],
+    "responsibilities": [
+      "负责RAG + Agent系统的全链路集成与优化（检索增强、知识图谱融合、多步推理、工具调用、输出可控性）",
+      "深度拆解B端复杂业务，转化为结构化任务分解（规划、工具选择、多轮交互、自我反思/纠错）",
+      "构建高质量领域数据集，进行大模型SFT/PEFT/LoRA/QLoRA等微调",
+      "设计高可靠AI服务接口（REST/gRPC）、Prompt/Chain/Graph编排、后处理逻辑、错误恢复机制",
+      "建立完整的Agent闭环体系：反馈采集 → 错误分析 → 数据/提示/模型迭代 → A/B测试 → 持续优化"
+    ],
+    "tags": ["RAG", "Agent", "LangGraph", "LlamaIndex", "CrewAI", "Milvus", "Docker", "LangSmith", "RAGAS", "南京"]
+  },
+  {
+    "category": "ai_application_engineer",
+    "company": "联友科技",
+    "position": "AI应用开发工程师",
+    "title": "联友科技 - AI应用开发工程师（制造/物流方向）",
+    "location": "武汉",
+    "salary_range": "未公开",
+    "content": "联友科技招聘AI应用开发工程师，聚焦AI原生应用落地，深入挖掘制造、物流领域业务智能化需求。基于公司AI平台与大模型能力完成智能体应用的定制、编排与交付。负责视觉识别等成熟AI算法的场景适配与效果调优，完成算法在工业生产、仓储物流场景的落地应用。协助业务方整理智能体相关知识，参与知识库建设，优化RAG检索效果。要求2027届本科及以上学历，人工智能、计算机、软件工程、数学等相关专业。熟悉大语言模型应用开发（Prompt工程、RAG、Agent编排），了解LangChain等主流框架。不要求大模型预训练、分布式训练、参数调优经验。",
+    "requirements": [
+      "2027届本科及以上学历，人工智能、计算机、软件工程、数学等相关专业",
+      "熟悉大语言模型应用开发（Prompt工程、RAG、Agent编排），了解LangChain等主流框架",
+      "掌握Python，具备良好的工程能力与编码习惯",
+      "具备较强的业务理解与场景拆解能力",
+      "有大模型应用开发、智能体搭建、知识库建设实践经历或相关竞赛经验者优先",
+      "不要求大模型预训练、分布式训练、参数调优经验"
+    ],
+    "responsibilities": [
+      "聚焦AI原生应用落地：深入挖掘制造、物流领域业务智能化需求，输出AI智能化解决方案",
+      "基于公司AI平台与大模型能力完成智能体应用的定制、编排与交付（智能体目标定义、任务拆解、工具绑定、流程编排、提示词工程）",
+      "负责视觉识别等成熟AI算法的场景适配与效果调优",
+      "协助业务方整理智能体相关知识，参与知识库建设，优化RAG检索效果",
+      "负责AI应用的调试上线、效果迭代与业务适配",
+      "跟进AI、大模型前沿技术，沉淀行业算法与应用解决方案"
+    ],
+    "tags": ["Agent编排", "RAG", "Prompt工程", "LangChain", "视觉识别", "知识库", "智能制造", "武汉"]
+  }
+]

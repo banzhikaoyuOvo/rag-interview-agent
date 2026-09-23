@@ -1,0 +1,100 @@
+[
+  {
+    "category": "project_highlight",
+    "title": "个人求职 RAG Agent - 企业级架构（V2）",
+    "content": "独立开发个人求职 RAG 知识库助手，作为 Parking-YOLO V1 的架构升级版，已完整跑通并开源中。技术栈：FastAPI + LangGraph 5 节点编排 + Milvus Standalone (Docker) + 应用层 BM25 + RRF 融合 + Citation 溯源。实现：① Query 改写（LLM 将口语化 query 改写成 2-3 个专业检索词，保留原始 query 参与检索）；② Hybrid Search（Dense + BM25 双路召回 + RRF 融合，解决纯向量对技术专有名词召回不稳定问题）；③ Citation 生成后校验（正则提取引用，与检索结果集合比对，非法引用触发重试）；④ visibility 权限隔离（public/private 检索层强制过滤）。",
+    "tags": ["RAG", "LangGraph", "FastAPI", "Milvus", "BM25", "RRF", "Citation"],
+    "evidence": "检索验证：`Checkpointer 持久化` 和 `astream_events 怎么用` 两个 query 目标 chunk 双路召回第一（dense_rank=1, bm25_rank=1）；Citation 校验 5/5 测试点通过"
+  },
+  {
+    "category": "project_highlight",
+    "title": "PCB 质检多 Agent 协同平台",
+    "content": "基于 LangGraph + FastAPI + YOLOv8n + pymilvus-lite + DeepSeek API 构建工业级质检系统。5-Agent 编排实现缺陷检测→标准匹配→根因分析→处置决策→报告生成全链路：Visual（YOLO 检测）、Standard（IPC-A-610G 标准匹配）、RootCause（DeepSeek 根因推理）、Decision（Supervisor 动态路由）、Report（结构化报告）。采用 Orchestrator-Worker 模式，Decision 作为 Supervisor 维护全局 State，Worker 完成后强制回环汇报，实现流程完全可控与断点续传。",
+    "tags": ["LangGraph", "Multi-Agent", "YOLOv8", "Milvus", "DeepSeek", "FastAPI"],
+    "evidence": "YOLOv8n 微调 mAP@50 达 0.896、Precision 0.943，单帧推理 1.2ms；6 类 PCB 缺陷 F1=0.93"
+  },
+  {
+    "category": "project_highlight",
+    "title": "基于 YOLO 与大模型的多模态智慧停车系统（毕业设计）",
+    "content": "毕业设计负责人，针对传统停车场巡查效率低、大模型易产生幻觉的痛点，独立开发涵盖'底层视觉感知 + 上层认知交互'的全链路 AI 应用。首创'事实归感知、规则归检索、表达归大模型'三层解耦架构：YOLO 提取车位占用率等客观事实，RAG 检索 B1/B2 层导航路线与收费规则，LLM 仅负责自然语言组织。彻底根除大模型在空间导航中的幻觉与虚构路径问题。设计安全包装器 get_parking_advice_safe，集成 JSON 清洗与字段校验，结构化输出解析成功率提升至 99%。",
+    "tags": ["YOLOv8", "Flask", "RAG", "LLM", "SSE", "向量数据库"],
+    "evidence": "稳定运行超 200 小时无故障；LLM 导航准确率 100%（基于事实注入）；用户平均交互等待时间从 3.2s 降至 0.8s（SSE 流式替代轮询）"
+  },
+  {
+    "category": "technical_skill",
+    "title": "LangGraph 企业级多 Agent 编排",
+    "content": "掌握 LangGraph StateGraph 核心能力：条件边动态路由（add_conditional_edges）、State Reducer 防覆盖（Annotated + operator.add）、模块级单例、异常隔离（try-except + error 短路）、断点续传（State 键存在性判断）。在 PCB 项目中实现 5-Agent Orchestrator-Worker 模式，解决多轮循环数据翻倍、空结果误判死循环等典型问题。",
+    "tags": ["LangGraph", "StateGraph", "Multi-Agent", "条件边", "State Reducer"],
+    "evidence": "修复 GraphRecursionError 死循环：根因是空列表被当 falsy，改用键存在性判断后解决；经验沉淀为 `visual_done: bool` 显式执行标记"
+  },
+  {
+    "category": "technical_skill",
+    "title": "RAG 检索增强生成 - 混合检索与 Citation",
+    "content": "在个人求职 RAG Agent 中完整落地混合检索链路：① LLM Query 改写（把'astream怎么用'改写成'astream_events 使用方法'，保留原始 query 参与检索）；② Dense + BM25 双路召回（Dense 抓语义，BM25 抓技术专有名词精确匹配）；③ RRF 融合（score = Σ 1/(k + rank)，k=60，无需归一化、无需调参）；④ Citation 生成后校验（正则提取引用与检索结果比对，非法触发重试）。",
+    "tags": ["RAG", "Hybrid Search", "BM25", "RRF", "Query Rewriting", "Citation"],
+    "evidence": "BM25 分词抽成独立 tokenizer，入库和检索两端严格一致；实测 Checkpointer / astream_events 两个 query 双路召回第一"
+  },
+  {
+    "category": "technical_skill",
+    "title": "FastAPI 异步服务与 SSE 流式",
+    "content": "使用 FastAPI 构建异步 API 服务，掌握 lifespan 生命周期管理、run_in_threadpool 处理同步调用、SSE 流式推送、依赖注入、中间件、健康检查分层。将 LangGraph 图执行与 FastAPI 端点集成，支持 /ask 同步 JSON 与 /ask/stream SSE 流式双端点。SSE 事件设计 5 类协议（start/node_start/llm_token/complete/error），配合前端 EventSource 实现实时进度展示。",
+    "tags": ["FastAPI", "SSE", "asyncio", "lifespan", "run_in_threadpool"],
+    "evidence": "SSE 替代轮询，用户平均交互等待时间从 3.2s 降至 0.8s；/ask 与 /ask/stream 双端点并行不冲突"
+  },
+  {
+    "category": "technical_skill",
+    "title": "LLM 工程化集成（DeepSeek）",
+    "content": "封装 DeepSeek API 为可复用的 LLM 客户端，支持同步 chat 与异步 chat_stream 双接口，单例模式避免重复初始化。在 PCB 项目中集成到 LangGraph RootCause Agent 节点，采用 ChatPromptTemplate + await ainvoke 激活 on_chat_model_stream 事件，实现 token 级流式输出。温度分层策略：Query 改写 0.1、答案生成 0.3、模拟面试 0.7。",
+    "tags": ["DeepSeek", "LLM", "Prompt Engineering", "流式输出"],
+    "evidence": "根因分析 557 字动态输出，API 调用延迟 <3s；结果完全基于 IPC 标准而非通用知识"
+  },
+  {
+    "category": "technical_skill",
+    "title": "YOLOv8 训练与特征提取",
+    "content": "掌握 YOLOv8n 完整训练与推理流程：① 数据集处理（COCO→YOLO 格式转换、train/val 分割）；② 微调训练（PKU-Market-PCB 数据集，6 类 PCB 缺陷，RTX 4060 Ti）；③ 特征提取（从 Neck 末端 Hook Layer=21 的 C2f 输出层截取 256 维特征，全局平均池化 + L2 归一化）。踩过推理尺寸坑：训练 imgsz=640，但 PCB 原图约 2592×1944，letterbox 到 640 后缺陷像素太小，同一张图从 0 检出变为 5 个缺陷（强制 INFERENCE_IMGSZ=1280 后解决）。",
+    "tags": ["YOLOv8", "PyTorch", "特征提取", "模型微调"],
+    "evidence": "mAP@50=0.896，Precision=0.943，单帧推理 1.2ms；short 类召回率 0.694（形态多变导致漏检）"
+  },
+  {
+    "category": "technical_skill",
+    "title": "向量数据库部署与 AI 辅助排障",
+    "content": "在 Windows + WSL2 环境下部署 Milvus v2.4.17 Standalone，遇到 4 层嵌套问题：jemalloc 动态库路径错误、etcd Raft 选举超时（WSL2 I/O 延迟）、Docker Named Volume 权限不一致、RocksDB 跨文件系统 POSIX 兼容性缺陷。在 AI 辅助下逐层定位并理解每层原因，最终采用 pymilvus-lite 嵌入式方案消除底层依赖。掌握 pymilvus + milvus-lite 版本对齐（pymilvus 3.0.1 + milvus-lite 3.2.1），以及 nullable 字段兼容性问题的根因（protobuf schema 断层）。",
+    "tags": ["Milvus", "Docker", "WSL2", "pymilvus-lite", "AI 辅助排障"],
+    "evidence": "pymilvus-lite 与生产 API 100% 兼容，环境搭建时间从 2 天缩短至 5 分钟，迁移成本为零"
+  },
+  {
+    "category": "technical_skill",
+    "title": "Docker 容器化与 Compose 编排",
+    "content": "掌握 Docker Compose 多服务编排、容器健康检查（healthcheck + depends_on: condition: service_healthy）、GPU 穿透验证（--gpus all）、镜像加速配置（registry-mirrors）、.dockerignore 安全与体积控制、多阶段依赖安装（CPU/GPU torch 分离）。在 PCB 项目中完成 Docker 化部署，解决 OpenCV 容器依赖缺失（libxcb.so.1）、健康检查 gRPC 限流（too_many_pings）、环境变量运行时注入（env_file）等典型问题。",
+    "tags": ["Docker", "Docker Compose", "WSL2", "GPU", "容器化"],
+    "evidence": "Docker Compose 单服务精简部署；容器内 Torch 2.14.0+cu126 / CUDA True / RTX 4060 Ti 验证通过"
+  },
+  {
+    "category": "technical_skill",
+    "title": "文档解析与数据治理",
+    "content": "在个人求职 RAG Agent 中设计多源数据解析链路：① JSON 解析（每条记录 → 1 chunk，保留 category/tags/evidence 元数据）；② Markdown 解析（按 ## 二级标题切分，每段 150-250 字，保留 parent-child 结构）；③ Chunk 元数据标准化（source_file/chunk_id/category/visibility/metadata_json）。用 LLM 提示词从历史对话记录中批量提取技术知识点，按主题分类到 6 个文件，数据量从 4 条扩到 76 条。",
+    "tags": ["文档解析", "Chunking", "数据治理", "Prompt Engineering"],
+    "evidence": "chunk_id 用 md5(source_file::index::text[:128])[:16] 生成，天然幂等；知识库从 4 条扩到 79 条"
+  },
+  {
+    "category": "open_source",
+    "title": "开源项目与技术分享",
+    "content": "GitHub 开源毕业设计项目 Parking-YOLO（基于 YOLO 与大模型的多模态智慧停车系统），项目完整呈现'事实与表达分离'的 RAG 架构设计。PCB 质检多 Agent 协同平台与个人求职 RAG Agent 已完成开发，准备开源。GitHub 地址：https://github.com/banzhikaoyuOvo",
+    "tags": ["GitHub", "开源", "技术分享"],
+    "evidence": "Parking-YOLO 已开源；2 个项目即将开源"
+  },
+  {
+    "category": "soft_skill",
+    "title": "退役大学生士兵 - 执行力与抗压能力",
+    "content": "2 年服役经历培养了极强的执行力和抗压能力。毕业后自学 AI 应用开发，全职投入 6-8h/天，3 个月内独立完成 3 个 AI 项目：Parking-YOLO 毕业设计（已开源）、PCB 质检多 Agent 协同平台（已完成）、个人求职 RAG Agent（已完成）。",
+    "tags": ["执行力", "自驱力", "抗压", "快速学习"],
+    "evidence": "全职备考期间保持 6-8h/天高效学习节奏；3 个月完成 3 个完整项目"
+  },
+  {
+    "category": "soft_skill",
+    "title": "AI 辅助开发能力 - 高效工程实践",
+    "content": "熟练使用 AI 编程助手（Claude、DeepSeek、ChatGPT）作为开发加速器，能够：① 用 AI 快速定位问题根因（如 Milvus 四层排障逐层剥离）；② 用 AI 生成代码后独立完成正确性验证（如用 py_compile 检查语法、写单测验证控制流）；③ 用 AI 辅助技术选型（对比 Milvus Lite vs Standalone、向量 RAG vs YAML 精确匹配）。核心能力不是'让 AI 写代码'，而是'知道该问什么、能判断答案对不对、能独立排错'。",
+    "tags": ["AI 辅助开发", "工程判断", "问题定位", "技术选型"],
+    "evidence": "独立完成 3 个项目，涉及 RAG / Agent / YOLO / Docker / 向量数据库全链路；沉淀 20+ 典型工程问题的排查经验"
+  }
+]

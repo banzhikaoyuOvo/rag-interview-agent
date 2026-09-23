@@ -1,0 +1,27 @@
+# ── Python ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+
+# ── 环境与密钥 ──
+.env
+.venv/
+venv/
+
+# ── Milvus 数据卷与配置（Docker 生成）──
+volumes/
+embedEtcd.yaml
+user.yaml
+
+# ── 应用缓存 ──
+data/bm25_cache/
+*.log
+
+# ── IDE ──
+.vscode/
+.idea/
