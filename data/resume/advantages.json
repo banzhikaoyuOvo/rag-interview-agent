@@ -16,9 +16,9 @@
   {
     "category": "project_highlight",
     "title": "基于 YOLO 与大模型的多模态智慧停车系统（毕业设计）",
-    "content": "毕业设计负责人，针对传统停车场巡查效率低、大模型易产生幻觉的痛点，独立开发涵盖'底层视觉感知 + 上层认知交互'的全链路 AI 应用。首创'事实归感知、规则归检索、表达归大模型'三层解耦架构：YOLO 提取车位占用率等客观事实，RAG 检索 B1/B2 层导航路线与收费规则，LLM 仅负责自然语言组织。彻底根除大模型在空间导航中的幻觉与虚构路径问题。设计安全包装器 get_parking_advice_safe，集成 JSON 清洗与字段校验，结构化输出解析成功率提升至 99%。",
+    "content": "毕业设计负责人，针对传统停车场巡查效率低、大模型易产生幻觉的痛点，独立开发涵盖'底层视觉感知 + 上层认知交互'的全链路 AI 应用。首创'事实归感知、规则归检索、表达归大模型'三层解耦架构：YOLO 提取车位占用率等客观事实，RAG 检索 B1/B2 层导航路线与收费规则，LLM 仅负责自然语言组织，从架构层面规避大模型编造车位数字与导航路线的问题。设计分层降级策略：LLM 限流自动指数退避重试，彻底失败时返回规则兜底文案，保证服务可用性。",
     "tags": ["YOLOv8", "Flask", "RAG", "LLM", "SSE", "向量数据库"],
-    "evidence": "稳定运行超 200 小时无故障；LLM 导航准确率 100%（基于事实注入）；用户平均交互等待时间从 3.2s 降至 0.8s（SSE 流式替代轮询）"
+    "evidence": "基于 PKLot 公开数据集（12,417 张预处理图像）微调 YOLOv8n，32 epoch 训练，最佳 mAP50-95 = 0.96544（epoch 29），推理 10 FPS（本机 GPU）；已 GitHub 开源并发布 Release v1.0.0（模型权重 17.6 MB 通过 Release 分发）"
   },
   {
     "category": "technical_skill",
@@ -79,17 +79,17 @@
   {
     "category": "open_source",
     "title": "开源项目与技术分享",
-    "content": "GitHub 开源毕业设计项目 Parking-YOLO（基于 YOLO 与大模型的多模态智慧停车系统），项目完整呈现'事实与表达分离'的 RAG 架构设计。PCB 质检多 Agent 协同平台与个人求职 RAG Agent 已完成开发，准备开源。GitHub 地址：https://github.com/banzhikaoyuOvo",
+    "content": "GitHub 开源毕业设计项目 Parking-YOLO（基于 YOLO 与大模型的多模态智慧停车系统），项目完整呈现'事实与表达分离'的 RAG 架构设计，已发布 Release v1.0.0 并提供模型权重下载。PCB 质检多 Agent 协同平台与个人求职 RAG Agent 已完成开发，准备开源。GitHub 地址：https://github.com/banzhikaoyuOvo",
     "tags": ["GitHub", "开源", "技术分享"],
-    "evidence": "Parking-YOLO 已开源；2 个项目即将开源"
+    "evidence": "Parking-YOLO 仓库：https://github.com/banzhikaoyuOvo/parking-yolo（含 README、架构文档、Release v1.0.0）"
   },
-  {
-    "category": "soft_skill",
-    "title": "退役大学生士兵 - 执行力与抗压能力",
-    "content": "2 年服役经历培养了极强的执行力和抗压能力。毕业后自学 AI 应用开发，全职投入 6-8h/天，3 个月内独立完成 3 个 AI 项目：Parking-YOLO 毕业设计（已开源）、PCB 质检多 Agent 协同平台（已完成）、个人求职 RAG Agent（已完成）。",
-    "tags": ["执行力", "自驱力", "抗压", "快速学习"],
-    "evidence": "全职备考期间保持 6-8h/天高效学习节奏；3 个月完成 3 个完整项目"
-  },
+{
+  "category": "soft_skill",
+  "title": "电子信息工程（AI 方向）背景 + 退役士兵 - 从算法到 AI 应用的转型",
+  "content": "本科电子信息工程（人工智能方向），大学期间系统学习机器学习、深度学习、算法设计与分析，算法基础扎实。毕业后进入就业市场，发现算法岗竞争激烈、门槛极高，遂基于原有算法底子主动转向 AI 应用开发方向，重点攻克 RAG、Agent、多模态等工程落地能力。结合 2 年部队服役锤炼的执行力与抗压能力，全职投入 6-8h/天，3 个月内独立完成 3 个 AI 项目：Parking-YOLO 毕业设计（已开源）、PCB 质检多 Agent 协同平台（已完成）、个人求职 RAG Agent（已完成）。",
+  "tags": ["人工智能", "算法基础", "职业转型", "执行力", "自驱力"],
+  "evidence": "本科电子信息工程人工智能专业背景；从算法学习转向 AI 应用工程落地；3 个月独立完成 3 个完整 AI 项目"
+},
   {
     "category": "soft_skill",
     "title": "AI 辅助开发能力 - 高效工程实践",
