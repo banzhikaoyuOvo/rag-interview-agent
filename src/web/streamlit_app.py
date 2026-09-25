@@ -1,4 +1,4 @@
-"""RAG Interview Agent - Streamlit 前端 v4（暗色科技风 + Mock 兜底）"""
+"""RAG Interview Agent - Streamlit 前端 v5（暗色科技风 + Mock 兜底 + 视觉精修）"""
 from __future__ import annotations
 
 import json
@@ -8,6 +8,22 @@ import httpx
 import streamlit as st
 
 API_BASE = os.getenv("API_BASE", "http://localhost:8001")
+
+import re
+
+# 匹配 [Source: xxx, Chunk ID: yyy]
+_CITATION_PATTERN = re.compile(r'\s*\[Source:\s*[^\]]+\]')
+
+
+def clean_citations(text: str) -> str:
+    """去除回答中的 inline citation（来源已单独在下方 expander 展示）"""
+    cleaned = _CITATION_PATTERN.sub('', text)
+    # 清理标点前的多余空格
+    cleaned = re.sub(r'\s+([，。！？,.!?])', r'\1', cleaned)
+    # 合并多余空格
+    cleaned = re.sub(r'[ \t]+', ' ', cleaned)
+    return cleaned.strip()
+
 
 st.set_page_config(
     page_title="俞晓兴 · AI 应用开发工程师",
@@ -104,6 +120,7 @@ body { background: #0F1115; }
     width: 600px; height: 600px;
     background: radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, transparent 70%);
     pointer-events: none;
+    animation: breathe 8s ease-in-out infinite;
 }
 .hero-wrap::after {
     content: '';
@@ -112,6 +129,10 @@ body { background: #0F1115; }
     width: 500px; height: 500px;
     background: radial-gradient(circle, rgba(34, 211, 238, 0.15) 0%, transparent 70%);
     pointer-events: none;
+}
+@keyframes breathe {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
 }
 .hero-content { position: relative; z-index: 1; }
 .hero-name {
@@ -137,7 +158,7 @@ body { background: #0F1115; }
     color: #cbd5e1;
     line-height: 2;
     margin-bottom: 2rem;
-    max-width: 760px;
+    max-width: 900px;
 }
 .hero-contacts {
     display: flex;
@@ -291,6 +312,16 @@ body { background: #0F1115; }
     color: #67e8f9 !important;
     transform: translateY(-1px);
 }
+.stButton > button[kind="secondary"] {
+    background: rgba(23, 25, 35, 0.6) !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    color: #cbd5e1 !important;
+}
+.stButton > button[kind="secondary"]:hover {
+    background: rgba(34, 211, 238, 0.1) !important;
+    border-color: rgba(34, 211, 238, 0.45) !important;
+    color: #67e8f9 !important;
+}
 
 /* Link button 样式 */
 .stLinkButton > a {
@@ -305,47 +336,103 @@ body { background: #0F1115; }
     padding: 0.4rem 0.9rem !important;
 }
 .stLinkButton > a:hover {
-    background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(139, 92, 246, 0.2)) !important;
-    border-color: rgba(34, 211, 238, 0.5) !important;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(139, 92, 246, 0.25)) !important;
+    border-color: rgba(34, 211, 238, 0.6) !important;
     color: #67e8f9 !important;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 0 24px rgba(34, 211, 238, 0.3), 0 4px 12px rgba(34, 211, 238, 0.15);
 }
 
-/* ── 对话气泡区分 ── */
+/* ── 对话气泡（v5 加强）── */
 [data-testid="stChatMessage"] {
-    padding: 1rem 1.2rem;
-    border-radius: 12px;
-    margin-bottom: 0.5rem;
+    padding: 1.15rem 1.4rem !important;
+    border-radius: 14px !important;
+    margin-bottom: 1rem !important;
+    border: 1px solid transparent !important;
 }
 [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-user"]) {
-    background: rgba(100, 116, 139, 0.08);
-    border-left: 3px solid #64748b;
+    background: linear-gradient(135deg, rgba(100, 116, 139, 0.08), rgba(100, 116, 139, 0.04)) !important;
+    border-left: 3px solid #64748b !important;
 }
 [data-testid="stChatMessage"]:has([data-testid="chatAvatarIcon-assistant"]) {
-    background: rgba(139, 92, 246, 0.06);
-    border-left: 3px solid #8b5cf6;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.06), rgba(34, 211, 238, 0.04)) !important;
+    border-left: 3px solid #8b5cf6 !important;
+    border-color: rgba(139, 92, 246, 0.2) !important;
+}
+[data-testid="stChatMessage"] [data-testid="stMarkdownContainer"] p {
+    margin-bottom: 0.8rem !important;
+    line-height: 1.75 !important;
+}
+[data-testid="stChatMessage"] [data-testid="stMarkdownContainer"] p:last-child {
+    margin-bottom: 0 !important;
 }
 
-/* ── 底部输入框毛玻璃 ── */
+/* ── 代码块样式（统一青紫色调）── */
+code {
+    background: rgba(99, 102, 241, 0.15) !important;
+    color: #67e8f9 !important;
+    padding: 0.15rem 0.4rem !important;
+    border-radius: 5px !important;
+    font-size: 0.88em !important;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+}
+pre {
+    background: #0a0b10 !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    border-radius: 10px !important;
+    padding: 1rem !important;
+}
+pre code {
+    background: transparent !important;
+    color: #cbd5e1 !important;
+    border: none !important;
+}
+[data-testid="stMarkdownContainer"] .k,
+[data-testid="stMarkdownContainer"] .kd,
+[data-testid="stMarkdownContainer"] .kn {
+    color: #c7d2fe !important;
+}
+[data-testid="stMarkdownContainer"] .s,
+[data-testid="stMarkdownContainer"] .s1,
+[data-testid="stMarkdownContainer"] .s2 {
+    color: #67e8f9 !important;
+}
+[data-testid="stMarkdownContainer"] .nf,
+[data-testid="stMarkdownContainer"] .nc {
+    color: #fbbf24 !important;
+}
+
+/* ── 底部输入框毛玻璃加强 ── */
 [data-testid="stChatInput"] {
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px) !important;
     background: rgba(15, 17, 21, 0.85) !important;
-    border-top: 1px solid rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(34, 211, 238, 0.18) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(34, 211, 238, 0.05) inset !important;
+    transition: all 0.25s !important;
+}
+[data-testid="stChatInput"]:focus-within {
+    border-color: rgba(34, 211, 238, 0.4) !important;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4), 0 0 24px rgba(34, 211, 238, 0.15) !important;
+}
+[data-testid="stChatInput"] textarea {
+    background: transparent !important;
+    color: #E5E7EB !important;
 }
 
-/* 演示模式徽章 */
+/* ── 演示模式徽章（v5：位置由 Python 控制）── */
 .demo-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.3rem 0.7rem;
-    background: rgba(251, 191, 36, 0.1);
-    border: 1px solid rgba(251, 191, 36, 0.3);
-    border-radius: 6px;
+    padding: 0.35rem 0.8rem;
+    background: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    border-radius: 8px;
     color: #fbbf24;
     font-size: 0.78rem;
     font-weight: 500;
-    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -358,7 +445,8 @@ st.markdown("""
         <div class="hero-title">AI 应用开发工程师 · 26 届电子信息工程（AI 方向）</div>
         <div class="hero-desc">
             退役大学生士兵，3 个月独立完成 3 个 AI 项目并全部开源。<br>
-            专注 LangGraph 多 Agent 编排、RAG 检索增强、FastAPI 异步服务，能独立完成从架构设计、代码实现、调试排错到 Docker 部署的完整工程流程。
+            专注 LangGraph 多 Agent 编排、RAG 检索增强、FastAPI 异步服务。<br>
+            能独立完成从架构设计、代码实现、调试排错到 Docker 部署的完整工程流程。
         </div>
         <div class="hero-contacts">
             <span class="item">📍 杭州 / 深圳 / 广州 / 江西 / 上海 / 南京</span>
@@ -467,6 +555,7 @@ NODE_LABELS = {
     "generate": "🤖 LLM 生成",
 }
 
+
 def format_node_output(node: str, output: dict) -> str:
     if node == "query_rewrite":
         return f"改写成 {len(output.get('rewritten_queries', []))} 个 query"
@@ -479,6 +568,7 @@ def format_node_output(node: str, output: dict) -> str:
         invalid = output.get("citation_invalid", 0)
         return f"引用 {total} 处，非法 {invalid} 处"
     return ""
+
 
 # 初始化 session_state
 if "messages" not in st.session_state:
@@ -498,35 +588,37 @@ cols = st.columns(len(PRESETS))
 for i, q in enumerate(PRESETS):
     with cols[i]:
         if st.button(q, use_container_width=True, key=f"preset_{i}"):
-            # Bug 修复：用 session_state 管理待处理 query，避免重复触发
             if st.session_state.pending_query != q:
                 st.session_state.pending_query = q
                 st.rerun()
 
 # 渲染历史
 for msg in st.session_state.messages:
-    with st.chat_message(msg["role"]):
-        st.markdown(msg["content"])
+    avatar = "👤" if msg["role"] == "user" else "⚡"
+    with st.chat_message(msg["role"], avatar=avatar):
+        content = msg["content"] if msg["role"] == "user" else clean_citations(msg["content"])
+        st.markdown(content)
         if msg.get("sources"):
             with st.expander(f"📚 来源引用 ({len(msg['sources'])})"):
                 for s in msg["sources"]:
                     st.markdown(f"**{s['source_file']}** `{s['chunk_id']}` score=`{s['score']}`")
-                    st.caption(s["text_preview"])
+                    # 用 code 样式展示纯文本，避免 Markdown 标题渲染
+                    preview = s["text_preview"].replace("\n", " ")
+                    st.markdown(f"<div style='color:#94a3b8;font-size:0.82rem;line-height:1.6;padding:0.4rem 0.6rem;background:rgba(15,17,21,0.5);border-radius:6px;border-left:2px solid rgba(99,102,241,0.3);'>{preview}</div>", unsafe_allow_html=True)
 
 # 输入
 user_input = st.chat_input("问我任何关于我的问题...")
 
-# 优先处理按钮点击，其次处理输入框
 if st.session_state.pending_query:
     user_input = st.session_state.pending_query
-    st.session_state.pending_query = None  # 立即清空，避免重复
+    st.session_state.pending_query = None
 
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
-    with st.chat_message("user"):
+    with st.chat_message("user", avatar="👤"):
         st.markdown(user_input)
 
-    with st.chat_message("assistant"):
+    with st.chat_message("assistant", avatar="⚡"):
         status = st.status("正在思考...", expanded=True)
         answer_text = ""
         sources_data: list[dict] = []
@@ -568,27 +660,28 @@ if user_input:
             status.update(label="✅ 完成", state="complete", expanded=False)
 
         except (httpx.ConnectError, httpx.ConnectTimeout, httpx.ReadTimeout, httpx.RemoteProtocolError):
-            # ── Mock 兜底：后端不可用时降级 ──
             is_demo_mode = True
             mock_ans = get_mock_answer(user_input)
             if mock_ans:
                 answer_text = mock_ans
-                status.update(label="🎭 演示模式", state="complete", expanded=False)
             else:
                 answer_text = f"**演示模式下暂不支持此问题。**\n\n完整功能需启动后端服务（FastAPI + Milvus）。当前可尝试以下预设问题：\n\n" + "\n".join(f"- {q}" for q in MOCK_ANSWERS.keys())
-                status.update(label="🎭 演示模式", state="complete", expanded=False)
+            status.update(label="🎭 演示模式", state="complete", expanded=False)
 
         except Exception as e:
-            # 其他异常也降级
             is_demo_mode = True
             mock_ans = get_mock_answer(user_input)
             answer_text = mock_ans or f"服务暂时不可用。可尝试以下问题：\n\n" + "\n".join(f"- {q}" for q in MOCK_ANSWERS.keys())
             status.update(label="🎭 演示模式", state="complete", expanded=False)
 
         if answer_text:
+            st.markdown(clean_citations(answer_text))
+            # v5：演示模式徽章移到答案下方
             if is_demo_mode:
-                st.markdown('<div class="demo-badge">🎭 演示模式 · 后端未连接</div>', unsafe_allow_html=True)
-            st.markdown(answer_text)
+                st.markdown(
+                    '<div class="demo-badge" style="margin-top: 0.75rem;">🎭 演示模式 · 后端未连接</div>',
+                    unsafe_allow_html=True,
+                )
             c_total = citation_info.get("total", 0)
             c_valid = citation_info.get("valid", 0)
             c_invalid = citation_info.get("invalid", 0)
