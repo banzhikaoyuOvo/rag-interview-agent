@@ -2,14 +2,14 @@
   {
     "category": "project_highlight",
     "title": "个人求职 RAG Agent - 企业级架构（V2）",
-    "content": "独立开发个人求职 RAG 知识库助手，作为 Parking-YOLO V1 的架构升级版，已完整跑通并开源中。技术栈：FastAPI + LangGraph 5 节点编排 + Milvus Standalone (Docker) + 应用层 BM25 + RRF 融合 + Citation 溯源。实现：① Query 改写（LLM 将口语化 query 改写成 2-3 个专业检索词，保留原始 query 参与检索）；② Hybrid Search（Dense + BM25 双路召回 + RRF 融合，解决纯向量对技术专有名词召回不稳定问题）；③ Citation 生成后校验（正则提取引用，与检索结果集合比对，非法引用触发重试）；④ visibility 权限隔离（public/private 检索层强制过滤）。",
+    "content": "独立开发个人求职 RAG 知识库助手，作为 Parking-YOLO V1 的架构升级版，已完整跑通并开源到 GitHub。技术栈：FastAPI + LangGraph 5 节点编排 + Milvus Standalone (Docker) + 应用层 BM25 + RRF 融合 + Citation 溯源。实现：① Query 改写（LLM 将口语化 query 改写成 2-3 个专业检索词，保留原始 query 参与检索）；② Hybrid Search（Dense + BM25 双路召回 + RRF 融合，解决纯向量对技术专有名词召回不稳定问题）；③ Citation 生成后校验（正则提取引用，与检索结果集合比对，非法引用触发重试）；④ visibility 权限隔离（public/private 检索层强制过滤）。",
     "tags": ["RAG", "LangGraph", "FastAPI", "Milvus", "BM25", "RRF", "Citation"],
     "evidence": "检索验证：`Checkpointer 持久化` 和 `astream_events 怎么用` 两个 query 目标 chunk 双路召回第一（dense_rank=1, bm25_rank=1）；Citation 校验 5/5 测试点通过"
   },
   {
     "category": "project_highlight",
     "title": "PCB 质检多 Agent 协同平台",
-    "content": "基于 LangGraph + FastAPI + YOLOv8n + pymilvus-lite + DeepSeek API 构建工业级质检系统。5-Agent 编排实现缺陷检测→标准匹配→根因分析→处置决策→报告生成全链路：Visual（YOLO 检测）、Standard（IPC-A-610G 标准匹配）、RootCause（DeepSeek 根因推理）、Decision（Supervisor 动态路由）、Report（结构化报告）。采用 Orchestrator-Worker 模式，Decision 作为 Supervisor 维护全局 State，Worker 完成后强制回环汇报，实现流程完全可控与断点续传。",
+    "content": "基于 LangGraph + FastAPI + YOLOv8n + pymilvus-lite + DeepSeek API 构建工业级质检系统。5-Agent 编排实现缺陷检测→标准匹配→根因分析→处置决策→报告生成全链路：Visual（YOLO 检测）、Standard（IPC-A-610G 标准匹配）、RootCause（DeepSeek 根因推理）、Decision（Supervisor 动态路由）、Report（结构化报告）。采用 Orchestrator-Worker 模式，Decision 作为 Supervisor 维护全局 State，实现流程完全可控与断点续传。已完成 Docker Compose + GPU 穿透部署，容器内 CUDA 12.6 + RTX 4060 Ti 验证通过。",
     "tags": ["LangGraph", "Multi-Agent", "YOLOv8", "Milvus", "DeepSeek", "FastAPI"],
     "evidence": "YOLOv8n 微调 mAP@50 达 0.896、Precision 0.943，单帧推理 1.2ms；6 类 PCB 缺陷 F1=0.93"
   },
@@ -76,13 +76,13 @@
     "tags": ["文档解析", "Chunking", "数据治理", "Prompt Engineering"],
     "evidence": "chunk_id 用 md5(source_file::index::text[:128])[:16] 生成，天然幂等；知识库从 4 条扩到 79 条"
   },
-  {
-    "category": "open_source",
-    "title": "开源项目与技术分享",
-    "content": "GitHub 开源毕业设计项目 Parking-YOLO（基于 YOLO 与大模型的多模态智慧停车系统），项目完整呈现'事实与表达分离'的 RAG 架构设计，已发布 Release v1.0.0 并提供模型权重下载。PCB 质检多 Agent 协同平台与个人求职 RAG Agent 已完成开发，准备开源。GitHub 地址：https://github.com/banzhikaoyuOvo",
-    "tags": ["GitHub", "开源", "技术分享"],
-    "evidence": "Parking-YOLO 仓库：https://github.com/banzhikaoyuOvo/parking-yolo（含 README、架构文档、Release v1.0.0）"
-  },
+{
+  "category": "open_source",
+  "title": "开源项目与技术分享",
+  "content": "GitHub 开源 3 个项目：① Parking-YOLO 多模态智慧停车系统（毕业设计，已发布 Release v1.0.0，含完整 app.py + services + frontend + training 代码）；② PCB 质检多 Agent 协同平台（LangGraph 5-Agent 编排 + YOLOv8n 微调 + Docker Compose + GPU 穿透部署）；③ 个人求职 RAG Agent（FastAPI + LangGraph + Milvus + Hybrid Search + Citation 溯源）。所有项目均含完整 README、架构文档和测试。GitHub：https://github.com/banzhikaoyuOvo",
+  "tags": ["GitHub", "开源", "技术分享", "Parking-YOLO", "PCB质检", "RAG"],
+  "evidence": "Parking-YOLO: github.com/banzhikaoyuOvo/parking-yolo（5 commits，含 Release v1.0.0）；PCB 质检: github.com/banzhikaoyuOvo/pcb-quality-agent；RAG 求职: github.com/banzhikaoyuOvo/rag-interview-agent"
+},
 {
   "category": "soft_skill",
   "title": "电子信息工程（AI 方向）背景 + 退役士兵 - 从算法到 AI 应用的转型",
