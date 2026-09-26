@@ -1,0 +1,48 @@
+# ── Python 缓存 ──
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+
+# ── 环境与密钥 ──
+.env
+.env.local
+.venv/
+venv/
+
+# ── Milvus 数据卷与配置 ──
+volumes/
+embedEtcd.yaml
+user.yaml
+
+# ── 应用缓存（容器内重建）──
+data/bm25_cache/
+data/eval/
+*.log
+
+# ── IDE ──
+.vscode/
+.idea/
+*.swp
+
+# ── Git ──
+.git/
+.gitignore
+
+# ── 文档（不需要进镜像）──
+docs/
+README.md
+
+# ── 本地启动脚本 ──
+standalone_embed.bat
+standalone_embed.sh
+start_rag.ps1
+stop_rag.ps1
+src/web/streamlit_app.py.bak
+
+# ── 测试脚本（生产镜像不需要）──
+scripts/test_*.py

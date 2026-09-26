@@ -485,7 +485,7 @@ with col1:
         <div class="proj-badges">
             <span class="proj-badge">Hybrid Search</span>
             <span class="proj-badge">RRF</span>
-            <span class="proj-badge">105 条数据</span>
+            <span class="proj-badge">171 条数据</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
