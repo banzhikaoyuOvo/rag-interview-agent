@@ -1,282 +1,44 @@
 [
-  {
-    "id": "q01",
-    "query": "用 3 句话介绍你自己",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "profile.md",
-    "category": "self_intro"
-  },
-  {
-    "id": "q02",
-    "query": "你最擅长什么",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "profile.md",
-    "category": "self_intro"
-  },
-  {
-    "id": "q03",
-    "query": "讲一个最有挑战的项目",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "advantages.json",
-    "category": "project"
-  },
-  {
-    "id": "q04",
-    "query": "你熟悉哪些技术栈",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "profile.md",
-    "category": "skill"
-  },
-  {
-    "id": "q05",
-    "query": "你的开源项目有哪些",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "advantages.json",
-    "category": "project"
-  },
-  {
-    "id": "q06",
-    "query": "你的教育背景是什么",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "profile.md",
-    "category": "education"
-  },
-  {
-    "id": "q07",
-    "query": "你的短板是什么，怎么补",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "profile.md",
-    "category": "self_intro"
-  },
-  {
-    "id": "q08",
-    "query": "你做过什么 RAG 项目",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "advantages.json",
-    "category": "project"
-  },
-  {
-    "id": "q09",
-    "query": "快手这个岗位要求什么技能",
-    "collection": "job_descriptions",
-    "visibility": "public",
-    "expected_source": "sample_jds.json",
-    "category": "jd"
-  },
-  {
-    "id": "q10",
-    "query": "嘉环科技要求什么框架",
-    "collection": "job_descriptions",
-    "visibility": "public",
-    "expected_source": "sample_jds.json",
-    "category": "jd"
-  },
-  {
-    "id": "q11",
-    "query": "有哪些岗位要求 LangGraph",
-    "collection": "job_descriptions",
-    "visibility": "public",
-    "expected_source": "sample_jds.json",
-    "category": "jd"
-  },
-  {
-    "id": "q12",
-    "query": "联通的工作地点在哪里",
-    "collection": "job_descriptions",
-    "visibility": "public",
-    "expected_source": "sample_jds.json",
-    "category": "jd"
-  },
-  {
-    "id": "q13",
-    "query": "有哪些岗位接受应届生",
-    "collection": "job_descriptions",
-    "visibility": "public",
-    "expected_source": "sample_jds.json",
-    "category": "jd"
-  },
-  {
-    "id": "q14",
-    "query": "LangGraph StateGraph 原理是什么",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "langgraph_notes.md",
-    "category": "tech"
-  },
-  {
-    "id": "q15",
-    "query": "什么是 Checkpointer 持久化",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "langgraph_notes.md",
-    "category": "tech"
-  },
-  {
-    "id": "q16",
-    "query": "RRF 为什么比加权求和高",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "rag_notes.md",
-    "category": "tech"
-  },
-  {
-    "id": "q17",
-    "query": "FastAPI lifespan 怎么用",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "fastapi_notes.md",
-    "category": "tech"
-  },
-  {
-    "id": "q18",
-    "query": "Milvus HNSW 索引参数",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "milvus_notes.md",
-    "category": "tech"
-  },
-  {
-    "id": "q19",
-    "query": "Python 单例模式怎么实现",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "python_notes.md",
-    "category": "tech"
-  },
-  {
-    "id": "q20",
-    "query": "PCB 项目的架构演进是什么",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "project_notes.md",
-    "category": "project"
-  },
-    {
-    "id": "c01",
-    "query": "astream_events 怎么用",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "langgraph_notes.md",
-    "category": "challenge_proper_noun"
-  },
-  {
-    "id": "c02",
-    "query": "Checkpointer 支持哪些后端",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "langgraph_notes.md",
-    "category": "challenge_proper_noun"
-  },
-  {
-    "id": "c03",
-    "query": "add_conditional_edges 怎么用",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "langgraph_notes.md",
-    "category": "challenge_proper_noun"
-  },
-  {
-    "id": "c04",
-    "query": "milvus-lite 为什么不支持 Windows",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "milvus_notes.md",
-    "category": "challenge_proper_noun"
-  },
-  {
-    "id": "c05",
-    "query": "pymilvus 的 expr 参数为什么报错",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "milvus_notes.md",
-    "category": "challenge_proper_noun"
-  },
-  {
-    "id": "c06",
-    "query": "板子上的洞怎么检测",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "project_notes.md",
-    "category": "challenge_colloquial"
-  },
-  {
-    "id": "c07",
-    "query": "车停哪能查到吗",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "advantages.json",
-    "category": "challenge_colloquial"
-  },
-  {
-    "id": "c08",
-    "query": "RAG 是什么",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "rag_notes.md",
-    "category": "challenge_short"
-  },
-  {
-    "id": "c09",
-    "query": "SSE",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "fastapi_notes.md",
-    "category": "challenge_short"
-  },
-  {
-    "id": "c10",
-    "query": "我想了解候选人在 PCB 质检项目里用到了哪些 LangGraph 的高级特性，比如条件边、State Reducer、断点续传这些",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "advantages.json",
-    "category": "challenge_long"
-  },
-  {
-    "id": "c11",
-    "query": "候选人在生产环境部署 Milvus 时遇到过哪些具体的坑，最后怎么解决的",
-    "collection": "resume_advantages",
-    "visibility": "public",
-    "expected_source": "advantages.json",
-    "category": "challenge_long"
-  },
-  {
-    "id": "c12",
-    "query": "他匹配快手那个岗位吗",
-    "collection": "job_descriptions",
-    "visibility": "public",
-    "expected_source": "sample_jds.json",
-    "category": "challenge_cross_collection"
-  },
-  {
-    "id": "c13",
-    "query": "有哪些岗位需要混合检索经验",
-    "collection": "job_descriptions",
-    "visibility": "public",
-    "expected_source": "sample_jds.json",
-    "category": "challenge_cross_collection"
-  },
-  {
-    "id": "c14",
-    "query": "怎么处理大模型幻觉问题",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "rag_notes.md",
-    "category": "challenge_semantic"
-  },
-  {
-    "id": "c15",
-    "query": "为什么用 RRF 而不是加权求和",
-    "collection": "interview_notes",
-    "visibility": "private",
-    "expected_source": "rag_notes.md",
-    "category": "challenge_semantic"
-  }
+  {"id": "q01", "query": "用 3 句话介绍你自己", "collection": "resume_advantages", "visibility": "public", "expected_source": "profile.md", "category": "self_intro"},
+  {"id": "q02", "query": "你最擅长什么", "collection": "resume_advantages", "visibility": "public", "expected_source": "profile.md", "category": "self_intro"},
+  {"id": "q03", "query": "讲一个最有挑战的项目", "collection": "resume_advantages", "visibility": "public", "expected_source": "advantages.json", "category": "project"},
+  {"id": "q04", "query": "你熟悉哪些技术栈", "collection": "resume_advantages", "visibility": "public", "expected_source": "profile.md", "category": "skill"},
+  {"id": "q05", "query": "你的开源项目有哪些", "collection": "resume_advantages", "visibility": "public", "expected_source": "advantages.json", "category": "project"},
+  {"id": "q06", "query": "你的教育背景是什么", "collection": "resume_advantages", "visibility": "public", "expected_source": "profile.md", "category": "education"},
+  {"id": "q07", "query": "你的短板是什么，怎么补", "collection": "resume_advantages", "visibility": "public", "expected_source": "profile.md", "category": "self_intro"},
+  {"id": "q08", "query": "你做过什么 RAG 项目", "collection": "resume_advantages", "visibility": "public", "expected_source": "advantages.json", "category": "project"},
+  {"id": "q09", "query": "快手这个岗位要求什么技能", "collection": "job_descriptions", "visibility": "public", "expected_source": "sample_jds.json", "category": "jd"},
+  {"id": "q10", "query": "嘉环科技要求什么框架", "collection": "job_descriptions", "visibility": "public", "expected_source": "sample_jds.json", "category": "jd"},
+  {"id": "q11", "query": "有哪些岗位要求 LangGraph", "collection": "job_descriptions", "visibility": "public", "expected_source": "sample_jds.json", "category": "jd"},
+  {"id": "q12", "query": "联通的工作地点在哪里", "collection": "job_descriptions", "visibility": "public", "expected_source": "sample_jds.json", "category": "jd"},
+  {"id": "q13", "query": "有哪些岗位接受应届生", "collection": "job_descriptions", "visibility": "public", "expected_source": "sample_jds.json", "category": "jd"},
+  {"id": "q14", "query": "LangGraph StateGraph 原理是什么", "collection": "interview_notes", "visibility": "private", "expected_source": "langgraph_notes.md", "category": "tech"},
+  {"id": "q15", "query": "什么是 Checkpointer 持久化", "collection": "interview_notes", "visibility": "private", "expected_source": "langgraph_notes.md", "category": "tech"},
+  {"id": "q16", "query": "RRF 为什么比加权求和高", "collection": "interview_notes", "visibility": "private", "expected_source": "rag_notes.md", "category": "tech"},
+  {"id": "q17", "query": "FastAPI lifespan 怎么用", "collection": "interview_notes", "visibility": "private", "expected_source": "fastapi_notes.md", "category": "tech"},
+  {"id": "q18", "query": "Milvus HNSW 索引参数", "collection": "interview_notes", "visibility": "private", "expected_source": "milvus_notes.md", "category": "tech"},
+  {"id": "q19", "query": "Python 单例模式怎么实现", "collection": "interview_notes", "visibility": "private", "expected_source": "python_notes.md", "category": "tech"},
+  {"id": "q20", "query": "PCB 项目的架构演进是什么", "collection": "interview_notes", "visibility": "private", "expected_source": "project_notes.md", "category": "project"},
+
+  {"id": "c01", "query": "astream_events 怎么用", "collection": "interview_notes", "visibility": "private", "expected_source": "langgraph_notes.md", "category": "challenge_proper_noun"},
+  {"id": "c02", "query": "Checkpointer 支持哪些后端", "collection": "interview_notes", "visibility": "private", "expected_source": "langgraph_notes.md", "category": "challenge_proper_noun"},
+  {"id": "c03", "query": "add_conditional_edges 怎么用", "collection": "interview_notes", "visibility": "private", "expected_source": "langgraph_notes.md", "category": "challenge_proper_noun"},
+  {"id": "c04", "query": "milvus-lite 为什么不支持 Windows", "collection": "interview_notes", "visibility": "private", "expected_source": "milvus_notes.md", "category": "challenge_proper_noun"},
+  {"id": "c05", "query": "pymilvus 的 expr 参数为什么报错", "collection": "interview_notes", "visibility": "private", "expected_source": "milvus_notes.md", "category": "challenge_proper_noun"},
+  {"id": "c06", "query": "板子上的洞怎么检测", "collection": "interview_notes", "visibility": "private", "expected_source": "project_notes.md", "category": "challenge_colloquial"},
+  {"id": "c07", "query": "车停哪能查到吗", "collection": "resume_advantages", "visibility": "public", "expected_source": "advantages.json", "category": "challenge_colloquial"},
+  {"id": "c08", "query": "RAG 是什么", "collection": "interview_notes", "visibility": "private", "expected_source": "rag_notes.md", "category": "challenge_short"},
+  {"id": "c09", "query": "SSE", "collection": "interview_notes", "visibility": "private", "expected_source": "fastapi_notes.md", "category": "challenge_short"},
+  {"id": "c10", "query": "我想了解候选人在 PCB 质检项目里用到了哪些 LangGraph 的高级特性，比如条件边、State Reducer、断点续传这些", "collection": "resume_advantages", "visibility": "public", "expected_source": "advantages.json", "category": "challenge_long"},
+  {"id": "c11", "query": "候选人在生产环境部署 Milvus 时遇到过哪些具体的坑，最后怎么解决的", "collection": "resume_advantages", "visibility": "public", "expected_source": "advantages.json", "category": "challenge_long"},
+  {"id": "c12", "query": "他匹配快手那个岗位吗", "collection": "job_descriptions", "visibility": "public", "expected_source": "sample_jds.json", "category": "challenge_cross_collection", "cross_collection": true},
+  {"id": "c13", "query": "有哪些岗位需要混合检索经验", "collection": "job_descriptions", "visibility": "public", "expected_source": "sample_jds.json", "category": "challenge_cross_collection", "cross_collection": true},
+  {"id": "c14", "query": "怎么处理大模型幻觉问题", "collection": "interview_notes", "visibility": "private", "expected_source": "rag_notes.md", "category": "challenge_semantic"},
+  {"id": "c15", "query": "为什么用 RRF 而不是加权求和", "collection": "interview_notes", "visibility": "private", "expected_source": "rag_notes.md", "category": "challenge_semantic"},
+
+  {"id": "c16", "query": "候选人做过哪些多 Agent 项目", "collection": "resume_advantages", "visibility": "public", "expected_source": "advantages.json", "category": "challenge_cross_collection", "cross_collection": true},
+  {"id": "c17", "query": "面试时怎么讲 RRF 融合原理", "collection": "interview_notes", "visibility": "private", "expected_source": "rag_notes.md", "category": "challenge_cross_collection", "cross_collection": true},
+  {"id": "c18", "query": "Docker 部署在哪个项目里做过", "collection": "resume_advantages", "visibility": "public", "expected_source": "advantages.json", "category": "challenge_cross_collection", "cross_collection": true},
+  {"id": "c19", "query": "FastAPI 异步服务的实践场景", "collection": "interview_notes", "visibility": "private", "expected_source": "fastapi_notes.md", "category": "challenge_cross_collection", "cross_collection": true},
+  {"id": "c20", "query": "他的 Milvus 部署经验", "collection": "resume_advantages", "visibility": "public", "expected_source": "advantages.json", "category": "challenge_cross_collection", "cross_collection": true}
 ]

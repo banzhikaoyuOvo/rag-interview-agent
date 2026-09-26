@@ -1,3 +1,5 @@
+
+
 """RAG 检索评估脚本 - Hit@K + MRR + P95 延迟
 
 用法:
@@ -44,34 +46,32 @@ def evaluate_one(retriever: HybridRetriever, case: dict, top_k: int, mode: str =
     """评估单个 case
 
     mode: "hybrid" | "dense" | "bm25"
+    cross_collection: True 时检索全部 3 库
     """
     t0 = time.perf_counter()
 
-    if mode == "dense":
-        docs = retriever.dense_search(
-            case["query"],
-            case["collection"],
-            top_k=top_k,
-            visibility=case["visibility"],
-        )
-    elif mode == "bm25":
-        docs = retriever.bm25_search(
-            case["query"],
-            case["collection"],
-            top_k=top_k,
-            visibility=case["visibility"],
-        )
+    if case.get("cross_collection"):
+        collections = ["resume_advantages", "job_descriptions", "interview_notes"]
     else:
-        docs = retriever.retrieve(
-            case["query"],
-            case["collection"],
-            top_k=top_k,
-            visibility=case["visibility"],
-        )
+        collections = [case["collection"]]
 
+    merged: dict = {}
+    for col in collections:
+        if mode == "dense":
+            docs = retriever.dense_search(case["query"], col, top_k=top_k, visibility=case["visibility"])
+        elif mode == "bm25":
+            docs = retriever.bm25_search(case["query"], col, top_k=top_k, visibility=case["visibility"])
+        else:
+            docs = retriever.retrieve(case["query"], col, top_k=top_k, visibility=case["visibility"])
+
+        for d in docs:
+            if d.chunk_id not in merged or d.score > merged[d.chunk_id].score:
+                merged[d.chunk_id] = d
+
+    all_docs = sorted(merged.values(), key=lambda d: d.score, reverse=True)[:top_k]
     latency_ms = (time.perf_counter() - t0) * 1000
 
-    retrieved_sources = [d.source_file for d in docs]
+    retrieved_sources = [d.source_file for d in all_docs]
     first_hit_rank = None
     for rank, src in enumerate(retrieved_sources, start=1):
         if src == case["expected_source"]:
@@ -248,6 +248,7 @@ def main():
     parser = argparse.ArgumentParser(description="RAG 检索评估")
     parser.add_argument("--top-k", type=int, default=5, help="Top-K（默认 5）")
     parser.add_argument("--compare-dense", action="store_true", help="对比纯 Dense 检索")
+    parser.add_argument("--compare-all", action="store_true", help="对比混合 / 纯 Dense / 纯 BM25")
     args = parser.parse_args()
 
     print(f"\n📂 加载 Golden set: {GOLDEN_SET_PATH}")
@@ -265,7 +266,23 @@ def main():
 
     dense_results = None
     dense_metrics = None
-    if args.compare_dense:
+
+    if args.compare_all:
+        print("🚀 运行纯 Dense 评估...")
+        dense_results = run_evaluation(retriever, golden_set, args.top_k, mode="dense")
+        dense_metrics = compute_metrics(dense_results, args.top_k)
+        print_metrics("纯 Dense", dense_metrics, args.top_k)
+
+        print("🚀 运行纯 BM25 评估...")
+        bm25_results = run_evaluation(retriever, golden_set, args.top_k, mode="bm25")
+        bm25_metrics = compute_metrics(bm25_results, args.top_k)
+        print_metrics("纯 BM25", bm25_metrics, args.top_k)
+
+        write_report(hybrid_results, hybrid_metrics, args.top_k, dense_results, dense_metrics)
+        return
+
+    
+    
         print("🚀 运行纯 Dense 评估...")
         dense_results = run_evaluation(retriever, golden_set, args.top_k, mode="dense")
         dense_metrics = compute_metrics(dense_results, args.top_k)

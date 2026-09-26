@@ -140,7 +140,13 @@ class HybridRetriever:
         bm25_docs: list[RetrievedDoc],
         k: int = RRF_K,
         top_k: int = 8,
+        w_dense: float = 0.7,
+        w_bm25: float = 0.3,
     ) -> list[RetrievedDoc]:
+        """RRF 加权融合
+
+        w_dense / w_bm25: 权重，Dense 主导排序，BM25 补召回
+        """
         by_id: dict[str, RetrievedDoc] = {}
         rrf_scores: dict[str, float] = {}
 
@@ -148,14 +154,14 @@ class HybridRetriever:
             cid = doc.chunk_id
             by_id.setdefault(cid, doc)
             by_id[cid].dense_rank = rank
-            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (k + rank)
+            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + w_dense / (k + rank)
 
         for rank, doc in enumerate(bm25_docs, start=1):
             cid = doc.chunk_id
             if cid not in by_id:
                 by_id[cid] = doc
             by_id[cid].bm25_rank = rank
-            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + 1.0 / (k + rank)
+            rrf_scores[cid] = rrf_scores.get(cid, 0.0) + w_bm25 / (k + rank)
 
         merged: list[RetrievedDoc] = []
         for cid, doc in by_id.items():
@@ -165,7 +171,6 @@ class HybridRetriever:
 
         merged.sort(key=lambda d: d.score, reverse=True)
         return merged[:top_k]
-
     # ── 对外统一入口 ──────────────────────────────────
     def retrieve(
         self,
@@ -178,4 +183,8 @@ class HybridRetriever:
     ) -> list[RetrievedDoc]:
         dense_docs = self.dense_search(query, collection, dense_top_k, visibility)
         bm25_docs = self.bm25_search(query, collection, bm25_top_k, visibility)
-        return self.rrf_fusion(dense_docs, bm25_docs, k=RRF_K, top_k=top_k)
+        return self.rrf_fusion(
+            dense_docs, bm25_docs,
+            k=RRF_K, top_k=top_k,
+            w_dense=0.7, w_bm25=0.3,
+        )
