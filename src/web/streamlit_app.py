@@ -692,7 +692,7 @@ if user_input:
                 with st.expander(f"📚 来源引用 ({len(sources_data)})"):
                     for s in sources_data:
                         st.markdown(f"**{s['source_file']}** `{s['chunk_id']}` score=`{s['score']}`")
-                        st.caption(s["text_preview"])
+                        st.text(s["text_preview"])
 
         st.session_state.messages.append({
             "role": "assistant",
